@@ -35,3 +35,20 @@ cat ./c4c2b1111710c840107313a395b2716bb193f4335d173f87984ed7ed8c2fc1c8/diff/chal
 ```
 ![flag](./images/find_docker_file.png)
 
+## Web application
+### World Wild Web
+
+1. we went to the challenge and find the web page as shown in figure below.
+
+![first](./images/first.png)
+
+2. we clicked the stuff and found the page below.
+
+![stuff](./images/stuff.png)
+
+3. then I disabled css and went thought all links on each webpages and found the flag.
+
+![disable](./images/disable_css.png)
+
+4. You could use the less brute-force appoach by using command `wget -r -l inf http://web.chal.csaw.io:5010/` or write some python script to run thought all links.
+
