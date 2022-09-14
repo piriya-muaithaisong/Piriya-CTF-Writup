@@ -52,3 +52,52 @@ cat ./c4c2b1111710c840107313a395b2716bb193f4335d173f87984ed7ed8c2fc1c8/diff/chal
 
 4. You could use the less brute-force appoach by using command `wget -r -l inf http://web.chal.csaw.io:5010/` or write some python script to run thought all links.
 
+## Cryptography
+### Gotta Crack Them All
+
+1. It is the steam encryption with leaked plain text
+2. So, I use leaked plain text xor all the encrypt texts to find key
+3. Then, use keys to decrypt all the encrypttext --> if the text is readable it means I found a valid key.
+
+    $plaintext \oplus key = encrypttext$
+
+    $plaintext \oplus encrypttext = key$
+
+    $plaintexts(leaked) \oplus encrypttexts = keys$
+
+    $keys \oplus encrypttexts = plaintexts$
+
+```python
+with open('key.txt','rb') as f:
+	key = f.read()
+
+def encrypt(plain):
+	return b''.join((ord(x) ^ y).to_bytes(1,'big') for (x,y) in zip(plain,key))
+
+def decrypt(cipher):
+	return b''.join((ord(x) ^ y).to_bytes(1,'big') for (x,y) in zip(cipher,key))
+
+def encrypt2(plain,key):
+	return b''.join((x ^ y).to_bytes(1,'big') for (x,y) in zip(plain,key))
+	
+with open('./leaked_password.txt','rb') as f:
+	passwd = f.read()
+key = passwd
+key2=[]
+with open("encrypted_passwords.txt", 'rb') as f:
+	enc_passes = f.readlines()
+	for enc_pass in enc_passes:
+		plain = encrypt2(enc_pass,key)
+		key2.append(plain)
+
+for i in key2:
+	print("Key = ", i)
+	
+	for enc_pass in enc_passes:
+		plain = encrypt2(enc_pass,i)
+		
+		print(plain)
+	input()
+```
+
+
