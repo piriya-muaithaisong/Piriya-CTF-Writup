@@ -12,20 +12,20 @@
 ## Reverse Engineering
 ### DockeRELeakage
 
-1. download the dockeRELeakage.tar.gz
-2. load image: `docker load < dockeRELeakage.tar.gz`
-3. look for image's histry `docker images history <IMAGE>` (use `--no-trunc` to see all command)
+1. Download the dockeRELeakage.tar.gz
+2. Load image: `docker load < dockeRELeakage.tar.gz`
+3. Look for image's histry `docker images history <IMAGE>` (use `--no-trunc` to see all command)
 
 ![history](./images/history.png)
 
-4. found base64 --> crack and found the first half of the falg
-5. use dive to reverse engineering and find all file on the container
+4. Found base64 --> crack and found the first half of the falg
+5. Use dive to reverse engineering and find all file on the container
 
 ![dive](./images/dive.png)
 
-6. from the history, I found out that flag.txt likely to have the other half of the flag 
-7. all file on the docker present on the /var/lib/docker/overlay2 path
-8. find flag
+6. From the history, I found out that flag.txt likely to have the other half of the flag 
+7. All file on the docker present on the /var/lib/docker/overlay2 path
+8. Find flag
 ```bash
 cd /var/lib/docker/overlay2
 
@@ -38,15 +38,15 @@ cat ./c4c2b1111710c840107313a395b2716bb193f4335d173f87984ed7ed8c2fc1c8/diff/chal
 ## Web application
 ### World Wild Web
 
-1. we went to the challenge and find the web page as shown in figure below.
+1. We went to the challenge and find the web page as shown in figure below.
 
 ![first](./images/first.png)
 
-2. we clicked the stuff and found the page below.
+2. We clicked the stuff and found the page below.
 
 ![stuff](./images/stuff.png)
 
-3. then I disabled css and went thought all links on each webpages and found the flag.
+3. Then I disabled css and went thought all links on each webpages and found the flag.
 
 ![disable](./images/disable_css.png)
 
@@ -54,7 +54,7 @@ cat ./c4c2b1111710c840107313a395b2716bb193f4335d173f87984ed7ed8c2fc1c8/diff/chal
 
 ### My Little Website
 
-1. first approach (front matter in markdown)
+1. First approach (front matter in markdown)
 ```
 ---
 launch_options: {headless: true, args: ["--disable-web-security", "--no-sandbox"]}
@@ -67,7 +67,7 @@ launch_options: {headless: true, args: ["--disable-web-security", "--no-sandbox"
 
 ### Good Intention
 
-1. we can upload file into the server
+1. We can upload file into the server
 2. /log_config is vulnerable to path tarversal
 
 ![log_config](./images/log_config.png)
@@ -104,7 +104,7 @@ args=('application/static/docs/piriya.log',)
 format=%(asctime)s - %(name)s - %(levelname)s - %(message)s
 ```
 
-4. then upload log file via APIs (you will get the 500 internal server error but that ok)
+4. Then upload log file via APIs (you will get the 500 internal server error but that ok)
 
 ```python
 from fileinput import filename
@@ -240,7 +240,7 @@ if __name__ == "__main__":
     main()
 ```
 
-5. go to http://web.chal.csaw.io:5012/static/docs/piriya.flag to get flag
+5. Go to http://web.chal.csaw.io:5012/static/docs/piriya.flag to get flag
 
 ## Cryptography
 ### Gotta Crack Them All
