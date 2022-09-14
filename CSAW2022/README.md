@@ -1,13 +1,13 @@
 # CSAW CTF Qualification Round 2020
 ## Table of Content
-- [Reverse Engineering](./)
-    - [DockeRELeakage](./)
-- [Web application](./)
-    - [World Wild Web](./)
-    - [My Little Website](./)
-    - [Good Intention](./)
-- [Cryptography](./)
-    - [Gotta Crack Them All](./)
+- [Reverse Engineering](#Web-application)
+    - [DockeRELeakage](#DockeRELeakage)
+- [Web application](#Web-application)
+    - [World Wild Web](#World-Wild-Web)
+    - [My Little Website](#My-Little-Website)
+    - [Good Intention](#Good-Intention)
+- [Cryptography](#Cryptography)
+    - [Gotta Crack Them All](#Gotta-Crack04-Them-All)
 
 ## Reverse Engineering
 ### DockeRELeakage
