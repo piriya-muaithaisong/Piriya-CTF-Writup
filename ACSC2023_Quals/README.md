@@ -26,7 +26,7 @@ First, I attempted to use the Wireshark filter to list all of the USB protocols 
 ```
 ((usb.transfer_type == 0x01) && (frame.len == 72)) && !(usb.capdata == 00:00:00:00:00:00:00:00)
 ```
-Next, I exported them to JSON file
+Next, I exported them into a JSON file
 
 ![pcap.png](./images/pcap.png)
 
