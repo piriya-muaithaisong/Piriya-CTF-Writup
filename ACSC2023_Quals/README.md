@@ -22,7 +22,7 @@ After running it, I got the flag in a few minutes.
 
 ## pcap-1 (Forensic)
 
-First, I tried using the Wireshark filter to list all of the keystrokes.
+First, I attempted to use the Wireshark filter to list all of the USB protocols with keystrokes. 
 ```
 ((usb.transfer_type == 0x01) && (frame.len == 72)) && !(usb.capdata == 00:00:00:00:00:00:00:00)
 ```
