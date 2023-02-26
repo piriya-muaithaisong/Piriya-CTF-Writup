@@ -12,7 +12,7 @@ I solved this challenge by implementing the decryption algorithm from Wikipedia.
 
 ![formula](./images/wikipedia.png)
 
-However, because this challenge did not provide me with the r parameter, I attempted to brute-force it using my python code.
+However, because this challenge did not provide me with the r parameter. So, I attempted to brute-force it using this python code.
 
 [merkle.py](./file/merkle.py)
 
