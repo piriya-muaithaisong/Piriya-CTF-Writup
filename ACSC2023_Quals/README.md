@@ -46,7 +46,7 @@ After decoding, I received quite an strange flag.
 ```
 aaaaAACCSSCC{{aaaaff00rr33nnss11ccssbbbbaabbaaaaaaaaaaaaaaaaaaaaaaaa__bbaaaaiissccddaabb__aaaaaaaaaaaaaaaabbaaaaaaaaaaaass00aaaaaa__bbaaaaaaaaaaaaaaaabbaaaaaaaaaaaaaaffuummdeldelnnaaaaaaaaaaaaaaaaaaaaddddaabbbbccacacddbbccbbaaaabbaaaaaaaa}}
 ```
-So I tried to transform it back into the real flag.
+So I tried to transform it back into the readable flag.
 ```
 ACSC{f0r3ns1c_is_s0_fun}
 ```
