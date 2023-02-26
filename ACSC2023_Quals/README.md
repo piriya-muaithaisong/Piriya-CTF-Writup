@@ -70,3 +70,22 @@ Here's the code I created to automate this process.
 [link]
 
 [flag]
+
+
+## easySSTI (Web)
+
+The goal of this challenge is to read the flag without printing it in its normal format in response.
+
+So my plan is to find a way to store the content of the file in a variable and print it in another format. 
+
+I started by storing the flag FS in the $f variable. Then I declare the $data variable to store $f data and print it in binary format.
+
+```
+template: {{$f := .Echo.Filesystem.Open "/flag"}}{{$data := .Get "template" }}{{ $f.Read $data }}{{ print $data }}
+```
+
+[image]
+
+Then decode it using dec2ascii
+
+[image]
