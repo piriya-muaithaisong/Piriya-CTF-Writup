@@ -14,5 +14,36 @@ However, because this challenge did not provide me with the r parameter, I attem
 
 [Link]
 
+After a few minutes, I got the flag.
 
+```
+flag [image]
+```
 
+## pcap-1 (Forensic)
+
+First, I tried using the Wireshark filter to list all of the keystrokes.
+```
+((usb.transfer_type == 0x01) && (frame.len == 72)) && !(usb.capdata == 00:00:00:00:00:00:00:00)
+```
+And exported them to JSON file (usb.json)
+
+[image]
+
+Then, I used the Python code below to extract keystrokes
+
+[Link]
+
+And using this Python code to decode all keystroke payloads
+
+[Link]
+
+After decoding, I received quite an strange flag.
+
+```
+strange flag
+```
+So I tried to transform it back into the real flag.
+```
+real flag
+```
