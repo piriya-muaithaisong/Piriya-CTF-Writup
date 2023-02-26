@@ -12,7 +12,7 @@ I solved this challenge by implementing the decryption algorithm from Wikipedia.
 
 ![formula](./images/wikipedia.png)
 
-However, because this challenge did not provide me with the r parameter. So, I attempted to brute-force it using this python code.
+Unfortunately, because this challenge did not provide me with the valid r parameter, So, I attempted to brute-force it using this Python code.
 
 [merkle.py](./file/merkle.py)
 
@@ -34,26 +34,26 @@ Then, I used the Python code below to extract keystrokes
 
 [keystroke.py](./file/keystroke.py)
 
-And using this Python code to decode all keystroke payloads
+And using this Python code to decode all keystrokes
 
 [decode_keystroke.py](./file/decode_keystroke.py)
 
 > ref: https://blog.stayontarget.org/2019/03/decoding-mixed-case-usb-keystrokes-from.html
 
 
-After decoding, I received a flag with so much junk on it.
+After decoding, I received a flag with some junks on it.
 
 ```
 aaaaAACCSSCC{{aaaaff00rr33nnss11ccssbbbbaabbaaaaaaaaaaaaaaaaaaaaaaaa__bbaaaaiissccddaabb__aaaaaaaaaaaaaaaabbaaaaaaaaaaaass00aaaaaa__bbaaaaaaaaaaaaaaaabbaaaaaaaaaaaaaaffuummdeldelnnaaaaaaaaaaaaaaaaaaaaddddaabbbbccacacddbbccbbaaaabbaaaaaaaa}}
 ```
-So I tried to transform it back into the readable flag.
+So I tried to transform it back into a readable flag.
 ```
 ACSC{f0r3ns1c_is_s0_fun}
 ```
 
 ## serverless (Rev)
 
-After some tinkering with the challenge file, I realized that this is RSA encryption with an extra step.
+After experimenting with the challenge file, I realized that this is RSA encryption with an extra step.
 
 So this is my decoding step.
 
