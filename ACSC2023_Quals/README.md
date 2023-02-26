@@ -28,15 +28,15 @@ First, I tried using the Wireshark filter to list all of the keystrokes.
 ```
 And exported them to JSON file (usb.json)
 
-[image]
+![pcap.png](./images/pcap.png)
 
 Then, I used the Python code below to extract keystrokes
 
-[Link]
+[keystroke.py](./file/keystroke.py)
 
 And using this Python code to decode all keystroke payloads
 
-[Link]
+[decode_keystroke.py](./file/decode_keystroke.py)
 
 > ref: https://blog.stayontarget.org/2019/03/decoding-mixed-case-usb-keystrokes-from.html
 
@@ -44,11 +44,11 @@ And using this Python code to decode all keystroke payloads
 After decoding, I received quite an strange flag.
 
 ```
-strange flag
+aaaaAACCSSCC{{aaaaff00rr33nnss11ccssbbbbaabbaaaaaaaaaaaaaaaaaaaaaaaa__bbaaaaiissccddaabb__aaaaaaaaaaaaaaaabbaaaaaaaaaaaass00aaaaaa__bbaaaaaaaaaaaaaaaabbaaaaaaaaaaaaaaffuummdeldelnnaaaaaaaaaaaaaaaaaaaaddddaabbbbccacacddbbccbbaaaabbaaaaaaaa}}
 ```
 So I tried to transform it back into the real flag.
 ```
-real flag
+ACSC{f0r3ns1c_is_s0_fun}
 ```
 
 ## serverless (Rev)
@@ -58,16 +58,16 @@ After some tinkering with the challenge file, I realized that this is RSA encryp
 So this is my decoding step.
 
 1. base64 decoded and reversed the cipher text list
-2. Xored the cipher text with the password "acscpass."
+2. Xored the cipher text with the password "acscpass"
 3. select j,k,s from the list
 4. Changed the cipher text list to a long number
 5. Used random p,q,e to decrypt RSA until I got the flag
 
 Here's the code I created to automate this process.
 
-[link]
+[decrypt.py](./file/decrypt.py)
 
-[flag]
+```ACSC{warmup_challenge_so_easy}```
 
 
 ## easySSTI (Web)
@@ -82,8 +82,8 @@ I started by storing the flag FS in the $f variable. Then I declare the $data va
 template: {{$f := .Echo.Filesystem.Open "/flag"}}{{$data := .Get "template" }}{{ $f.Read $data }}{{ print $data }}
 ```
 
-[image]
+![burp_ssti.png](./images/burp_ssti.png)
 
 Then decode it using dec2ascii
 
-[image]
+![decode.png](./images/decode.png)
