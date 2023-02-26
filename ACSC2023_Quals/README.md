@@ -10,17 +10,15 @@
 
 I solved this challenge by implementing the decryption algorithm from Wikipedia.
 
-[image]
+![formula](./images/wikipedia.png)
 
 However, because this challenge did not provide me with the r parameter, I attempted to brute-force it using my python code.
 
-[Link]
+[merkle.py](./file/merkle.py)
 
-After a few minutes, I got the flag.
+After running it, I got the flag in a few minutes.
 
-```
-flag [image]
-```
+![flag](./images/flag-merkle.png)
 
 ## pcap-1 (Forensic)
 
