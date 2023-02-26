@@ -41,7 +41,7 @@ And using this Python code to decode all keystroke payloads
 > ref: https://blog.stayontarget.org/2019/03/decoding-mixed-case-usb-keystrokes-from.html
 
 
-After decoding, I received quite an strange flag.
+After decoding, I received a flag with so much junk on it.
 
 ```
 aaaaAACCSSCC{{aaaaff00rr33nnss11ccssbbbbaabbaaaaaaaaaaaaaaaaaaaaaaaa__bbaaaaiissccddaabb__aaaaaaaaaaaaaaaabbaaaaaaaaaaaass00aaaaaa__bbaaaaaaaaaaaaaaaabbaaaaaaaaaaaaaaffuummdeldelnnaaaaaaaaaaaaaaaaaaaaddddaabbbbccacacddbbccbbaaaabbaaaaaaaa}}
