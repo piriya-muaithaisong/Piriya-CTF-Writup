@@ -14,9 +14,9 @@ RSA is based on the mathematical properties of large prime numbers. Below are th
    $\( p \)$ and $\( q \)$.  
    Compute their product:
 
-   $$\[
+   $$\
    n = p \times q
-   $$\]
+   \$$
 
 2. **Calculate Euler’s Totient Function**:  
    \[
