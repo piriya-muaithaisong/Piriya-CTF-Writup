@@ -11,7 +11,7 @@ RSA is based on the mathematical properties of large prime numbers. Below are th
 ## 🔑 Key Generation
 
 1. **Choose two large prime numbers**:  
-   \( p \) and \( q \).  
+   $\( p \)$ and $\( q \)$.  
    Compute their product:
 
    \[
