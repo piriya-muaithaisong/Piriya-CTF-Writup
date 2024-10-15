@@ -1,7 +1,5 @@
 # My CTF Write Up
 
-This is where I store my write up challenge from the CTF that I've play since 01/09/2022
+This repository contains my personal collection of write-ups from various **Capture The Flag (CTF)** challenges. The purpose of this repository is to serve as a reference for future CTFs, helping me (and potentially others) revisit solutions and techniques I’ve used in the past.
 
-## CTF list
-1. [CSAW CTF Qualification Round 2022](./CSAW2022)
-2. [ACSC Qualification Round 2023](./ACSC2023_Quals)
+
