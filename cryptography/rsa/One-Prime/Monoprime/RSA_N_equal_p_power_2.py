@@ -6,7 +6,7 @@ ct = 222502885974182429500948389840563415291534726891354573907329512556439632810
 
 from Crypto.Util.number import getPrime, inverse, bytes_to_long, long_to_bytes, GCD
 
-phi = (p - 1) * p
+phi = (p - 1) * p # p*p - p
 d = inverse(e, phi)
 pt = pow(ct, d, n)
 decrypted = long_to_bytes(pt)

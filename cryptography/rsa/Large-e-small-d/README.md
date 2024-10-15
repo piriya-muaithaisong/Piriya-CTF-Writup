@@ -2,26 +2,21 @@
 
 In RSA, a large public exponent 𝑒 can lead to an unusually small private exponent 𝑑. This situation makes RSA vulnerable to certain attacks, such as the Håstad’s attack or Wiener’s attack.
 
-## Wiener’s attack
+## Wiener’s Attack
 
-- **Wiener's attack** works when the private exponent \(d\) is **less than \(N^{1/4}\)**. 
-- It exploits the mathematical relationship between \(e\), \(d\), and \(N\) using **continued fractions** to approximate:
+- **Wiener's attack** works when the private exponent d is **less than N^(1/4)**. 
+- It exploits the mathematical relationship between e, d, and N using **continued fractions** to approximate:
 
-  \[
-  \frac{d}{e}
-  \]
+  `d/e`
 
-- The attacker computes successive continued fractions until the correct \(d\) is found, breaking the encryption without needing to factor \(N\).
+- The attacker computes successive continued fractions until the correct d is found, breaking the encryption without needing to factor N.
 
+### Conditions for the Attack:
 
-Conditions for the Attack:
-
-- **Large \(e\)** results in a small \(d\) due to the modular inverse relationship.
+- **Large e** results in a small d due to the modular inverse relationship.
 - **Wiener's attack** becomes possible if:
 
-\[
-d < \frac{1}{3} N^{\frac{1}{4}}
-\]
+  `d < (1/3) * N^(1/4)`
 
 Code:
 ```python
